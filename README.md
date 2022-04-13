@@ -1,1 +1,0 @@
-# browser-zoom-inout-simulate
