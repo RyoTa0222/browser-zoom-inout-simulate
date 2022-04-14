@@ -1,6 +1,7 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import Zoom from "./components/Zoom";
+import { ZoomContainer } from "./styles/zoom.css";
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
         >
           Learn React
         </a>
+        <ZoomContainer>
+          <Zoom />
+        </ZoomContainer>
       </header>
     </div>
   );
