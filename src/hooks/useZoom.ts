@@ -1,25 +1,22 @@
 import { useEffect, useState, useCallback } from "react";
 import { ZoomType } from "../types/zoom";
-// 拡縮の間隔
-const SCALE_INTERVAL = 10;
-// 最小のズーム率
-const MINIMUM_ZOOM_RATIO = 60;
-// 最大のズーム率
-const MAXIMUM_ZOOM_RATIO = 120;
-// 変更できないアラートの文言
-const ALERT_MESSAGE = `表示サイズは${MINIMUM_ZOOM_RATIO}%から${MAXIMUM_ZOOM_RATIO}%まで変更可能です`;
+import {
+  SCALE_INTERVAL,
+  MINIMUM_ZOOM_RATIO,
+  MAXIMUM_ZOOM_RATIO,
+  ALERT_MESSAGE,
+  INITIAL_DISPLAY_SIZE,
+} from "../consts/config";
 
-type UseZoom = [
-  number,
-  {
-    zoomIn: () => void;
-    zoomOut: () => void;
-    reset: () => void;
-  }
-];
+export type UseZoom = {
+  displaySize: number;
+  zoomIn: () => void;
+  zoomOut: () => void;
+  reset: () => void;
+};
 
 const useZoom = (): UseZoom => {
-  const [displaySize, setDisplaySize] = useState(100);
+  const [displaySize, setDisplaySize] = useState(INITIAL_DISPLAY_SIZE);
   /**
    * 拡大する
    */
@@ -107,14 +104,12 @@ const useZoom = (): UseZoom => {
   useEffect(() => {
     document.documentElement.style.transformOrigin = "top left";
   }, []);
-  return [
+  return {
     displaySize,
-    {
-      zoomIn,
-      zoomOut,
-      reset,
-    },
-  ];
+    zoomIn,
+    zoomOut,
+    reset,
+  };
 };
 
 export default useZoom;

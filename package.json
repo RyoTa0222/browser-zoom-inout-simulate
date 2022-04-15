@@ -4,15 +4,15 @@
   "private": true,
   "homepage": "https://ryota0222.github.io/browser-zoom-inout-simulate",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^13.0.1",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "12.1.2",
     "@testing-library/user-event": "^12.1.10",
     "@types/jest": "^26.0.15",
     "@types/node": "^12.0.0",
     "@types/react": "^18.0.3",
     "@types/react-dom": "^18.0.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.5",
     "typescript": "^4.0.3",
@@ -34,7 +34,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "postbuild": "cp build/index.html build/404.html",
-    "test": "react-scripts test",
+    "test": "jest --env=jsdom --verbose",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -56,6 +56,36 @@
     ]
   },
   "devDependencies": {
-    "@types/styled-components": "^5.1.25"
+    "@babel/plugin-transform-modules-commonjs": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "@testing-library/react-hooks": "^8.0.0",
+    "@types/styled-components": "^5.1.25",
+    "babel-jest": "^27.5.1",
+    "jest": "^27.5.1",
+    "jest-styled-components": "^7.0.8",
+    "ts-jest": "^27.1.4"
+  },
+  "jest": {
+    "transform": {
+      "\\.jsx?$": "babel-jest",
+      "\\.tsx?$": "ts-jest"
+    },
+    "transformIgnorePatterns": [
+      "/node_modules/(?!(xxxx.*?\\.js$))"
+    ],
+    "testRegex": "(/test/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest-setup.js"
+    ]
   }
 }

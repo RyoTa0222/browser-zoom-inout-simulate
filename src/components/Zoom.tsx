@@ -7,24 +7,38 @@ import {
   ZoomResetButton,
   Spacer,
 } from "../styles/zoom.css";
+import { INITIAL_DISPLAY_SIZE } from "../consts/config";
 
 const Zoom = memo(() => {
-  const [displaySize, func] = useZoom();
+  const { displaySize, zoomIn, zoomOut, reset } = useZoom();
   return (
     <ZoomBox scale-correction={displaySize / 100}>
-      <DisplaySizeText>{displaySize}%</DisplaySizeText>
+      <DisplaySizeText data-testid="display-size">
+        {displaySize}%
+      </DisplaySizeText>
       <Spacer aria-hidden="true" />
       <ZoomSwitchButton
-        onClick={func.zoomOut}
+        onClick={zoomOut}
         aria-label="縮小"
         zoom-type="out"
+        data-testid="zoom-out-action-button"
       >
         -
       </ZoomSwitchButton>
-      <ZoomSwitchButton onClick={func.zoomIn} aria-label="拡大" zoom-type="in">
+      <ZoomSwitchButton
+        onClick={zoomIn}
+        aria-label="拡大"
+        zoom-type="in"
+        data-testid="zoom-in-action-button"
+      >
         +
       </ZoomSwitchButton>
-      <ZoomResetButton onClick={func.reset} aria-label="リセット">
+      <ZoomResetButton
+        onClick={reset}
+        aria-label="リセット"
+        data-testid="reset-action-button"
+        disabled={displaySize === INITIAL_DISPLAY_SIZE}
+      >
         リセット
       </ZoomResetButton>
     </ZoomBox>
