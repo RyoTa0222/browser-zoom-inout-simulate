@@ -17,26 +17,15 @@ const Zoom = memo(() => {
         {displaySize}%
       </DisplaySizeText>
       <Spacer aria-hidden="true" />
-      <ZoomSwitchButton
-        onClick={zoomOut}
-        aria-label="縮小"
-        zoom-type="out"
-        data-testid="zoom-out-action-button"
-      >
+      <ZoomSwitchButton onClick={zoomOut} aria-label="縮小" zoom-type="out">
         -
       </ZoomSwitchButton>
-      <ZoomSwitchButton
-        onClick={zoomIn}
-        aria-label="拡大"
-        zoom-type="in"
-        data-testid="zoom-in-action-button"
-      >
+      <ZoomSwitchButton onClick={zoomIn} aria-label="拡大" zoom-type="in">
         +
       </ZoomSwitchButton>
       <ZoomResetButton
         onClick={reset}
         aria-label="リセット"
-        data-testid="reset-action-button"
         disabled={displaySize === INITIAL_DISPLAY_SIZE}
       >
         リセット

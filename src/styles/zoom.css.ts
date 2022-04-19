@@ -44,7 +44,7 @@ export const ZoomSwitchButton = styled.button<{
   font-family: inherit;
   font-style: normal;
   font-weight: 700;
-  font-size: 0;
+  font-size: 20px;
   background: #252528;
   border: none;
   position: relative;
